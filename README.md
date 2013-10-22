@@ -46,8 +46,6 @@ Le code ci-dessous aura le même effet que celui vu juste avant, la différence 
 
 ````php
 <?php
-require('Bird.php');
-$bird = new Bird();
 
 $bird->post('/hi', function () {
 	echo 'hi guy !';
@@ -55,6 +53,15 @@ $bird->post('/hi', function () {
 
 
 ?>
+````
+
+Créer une "route" ne tenant pas compte du type de requête
+====
+
+````php
+$bird->any('/hello', function() {
+	echo 'Hello world';
+});
 ````
 
 Passer des variables dans le pattern
@@ -70,6 +77,39 @@ $bird->get('/view/user/:id', function ($id) {
 });
 ?>
 
+````
+
+Callbacks
+====
+
+Vous pouvez passer en deuxième paramètre des routes tout ce que peut accepter call_user_fun_array(), ainsi il vous est possible de faire quelque chose dans ce goût là :
+
+````php
+<?php
+
+require('bird.php');
+
+$bird = new Bird();
+
+class Callback {
+
+	public function __construct() {
+
+	}
+
+	public function test() {
+
+		echo 'Hello world !';
+
+	}
+
+}
+
+$callback = new Callback();
+
+$bird->any('/hello', array(&$callback, 'test'));
+
+?>
 ````
 
 Erreur 404
