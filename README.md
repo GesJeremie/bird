@@ -82,7 +82,7 @@ $bird->get('/view/user/:id', function ($id) {
 Callbacks
 ====
 
-Vous pouvez passer en deuxième paramètre des routes tout ce que peut accepter call_user_fun_array(), ainsi il vous est possible de faire quelque chose dans ce goût là :
+Vous pouvez passer en deuxième paramètre des routes tout ce que peut accepter call_user_func_array(), ainsi il vous est possible de faire quelque chose dans ce goût là :
 
 ````php
 <?php
